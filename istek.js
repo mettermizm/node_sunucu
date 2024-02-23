@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 // Sunucunuzun IP adresi ve portunu buraya girin
-const ws = new WebSocket('ws://192.168.0.119:3000');
+const ws = new WebSocket('ws://192.168.0.119:4000');
 
 // Bağlantı kurulduğunda
 ws.on('open', function open() {
