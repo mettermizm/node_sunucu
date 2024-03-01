@@ -14,7 +14,7 @@ const json = {
   }
 }
 
-// Hakkında sayfası
+// istek sayfası
 app.get('/istek', (req, res) => {
   res.send(json);
 });
