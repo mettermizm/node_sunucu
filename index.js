@@ -8,8 +8,10 @@ app.get('/about', (req, res) => {
 });
 
 const json = {
-  "baslik" : "Hoşgeldiniz",
-  "content" : "Bugün nasılsınız"
+  "mesaj": {
+    "baslik" : "Hoşgeldiniz",
+    "content" : "Bugün nasılsınız"
+  }
 }
 
 // Hakkında sayfası
