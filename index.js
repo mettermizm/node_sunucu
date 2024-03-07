@@ -1,6 +1,9 @@
-const express = require("express"); 
-const app = express(); 
-app.get("/", (req, res) => { res.send("Express on Vercel"); }); 
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
 
 // Hakkında sayfası
 app.get('/about', (req, res) => {
@@ -12,20 +15,18 @@ const json = {
     "baslik" : "Hoşgeldiniz",
     "content" : "Bugün nasılsınız"
   }
-}
+};
 
 // istek sayfası
 app.get('/istek', (req, res) => {
-  res.send(json);
+  res.json(json);
 });
 
-const PORT = process.env.PORT || 5000; 
-app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`); });
-
-
-
-
-
+const PORT = process.env.PORT || 5000;
+const IP_ADDRESS = '192.168.0.119'; // IP adresi
+app.listen(PORT, IP_ADDRESS, () => {
+  console.log(`Server is running on http://${IP_ADDRESS}:${PORT}`);
+});
 
 
 
