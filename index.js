@@ -1,35 +1,36 @@
 const express = require("express");
+const path = require("path");
+
 const app = express();
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", (req, res) => {
-  res.send("Express on Vercel");
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Hakkında sayfası
-app.get('/about', (req, res) => {
-  res.send('Hakkında sayfası');
+app.get("/about", (req, res) => {
+  res.send("Hakkında sayfası");
 });
 
 const json = {
-  "mesaj": {
-    "baslik" : "Hoşgeldiniz",
-    "content" : "Bugün nasılsınız"
-  }
+  mesaj: {
+    baslik: "Hoşgeldiniz",
+    content: "Bugün nasılsınız",
+  },
 };
 
 // istek sayfası
-app.get('/istek', (req, res) => {
+app.get("/istek", (req, res) => {
   res.json(json);
 });
 
 const PORT = process.env.PORT || 5000;
-const IP_ADDRESS = '192.168.0.119'; // IP adresi
+const IP_ADDRESS = "192.168.0.119"; // IP adresi
 app.listen(PORT, IP_ADDRESS, () => {
   console.log(`Server is running on http://${IP_ADDRESS}:${PORT}`);
 });
-
-
-
 
 // // index.js
 
@@ -57,9 +58,6 @@ app.listen(PORT, IP_ADDRESS, () => {
 //   console.log(`Sunucu http://localhost:${port} üzerinde çalışıyor`);
 // });
 
-
-
-
 // const puppeteer = require('puppeteer');
 
 // (async () => {
@@ -82,7 +80,5 @@ app.listen(PORT, IP_ADDRESS, () => {
 
 //   await browser.close();
 // })();
-
-
 
 // //https://media.fadb6-1.fna.whatsapp.net/mms/image/tLb9zjZ60fQchK5sgncsoQP2YlVxlH2R-8MAKMy3dBs=?token=tLb9zjZ60fQchK5sgncsoQP2YlVxlH2R-8MAKMy3dBs%3D&d_md=L3YvdDYyLjMxMTExLTI0LzM3ODA4ODc0OV85MTczNTQ5ODk3OTc2NTlfNzI4OTU3NjE0ODcxMTk5NTgxX24uZW5j&auth=Ac30fARM-H8I0Ai6VZlvjh0bTKp1PwRej-2URrA9J7z2Xg
