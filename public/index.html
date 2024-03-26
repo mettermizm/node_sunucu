@@ -4,27 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İsmail Fidan Site</title>
+    <style>
+        .fixed-button {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 100;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
         <div class="header">
-            İsmail Fidan Programlama girişv=11111
+            İsmail Fidan Programlama girişv=1
         </div>
         <div class="audio">
-            <audio id="myAudio">
+            <audio id="myAudio" loop>
                 <source src="/shitpost.mp3" type="audio/mp3">
                 Tarayıcınız audio elementini desteklemiyor.
             </audio>
-            <button onclick="playAudio()">Müziği Çal</button>
+            <button onclick="toggleAudio()" class="fixed-button">Müzik Aç/Kapat</button>
         </div>
     </div>
 
     <script>
         var audio = document.getElementById("myAudio");
+        var isPlaying = false;
 
-        function playAudio() {
-            audio.play();
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
         }
+
+        // Butona basıldığında ikon değişikliği ya da metni güncellemek için bir işlev (opsiyonel)
+        audio.onplay = function() {
+            document.querySelector('.fixed-button').textContent = 'Müziği Durdur';
+        };
+        audio.onpause = function() {
+            document.querySelector('.fixed-button').textContent = 'Müziği Çal';
+        };
     </script>
 </body>
 </html>
