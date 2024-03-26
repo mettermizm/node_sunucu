@@ -11,6 +11,18 @@
             bottom: 30px;
             z-index: 100;
         }
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white; /* Görselin yüklenmesi esnasında beyaz bir arkaplan */
+            z-index: 9999; /* Bu div'in en üstte olmasını sağlar */
+            display: flex; /* Resmi ortalamak için */
+            justify-content: center; /* Yatay ortalamak için */
+            align-items: center; /* Dikey ortalamak için */
+        }
     </style>
 </head>
 <body>
@@ -25,7 +37,12 @@
             </audio>
             <button onclick="toggleAudio()" class="fixed-button">Müzik Aç/Kapat</button>
         </div>
+
+        <div id="splash-screen" onclick="removeSplashScreen()">
+            <img src="/ismail.png" alt="Açılış Görseli" style="width:100%; heig ht:100%;">
+        </div>
     </div>
+
 
     <script>
         var audio = document.getElementById("myAudio");
@@ -39,6 +56,15 @@
                 audio.play();
             }
             isPlaying = !isPlaying;
+        }
+
+        function removeSplashScreen() {
+            document.getElementById('splash-screen').style.display = 'none';
+        }
+
+        // Opsiyonel olarak, belirli bir süre sonra görseli otomatik olarak kaldırmak için
+        window.onload = function() {
+            setTimeout(removeSplashScreen, 5000); // 5 saniye sonra görseli kaldır
         }
 
         // Butona basıldığında ikon değişikliği ya da metni güncellemek için bir işlev (opsiyonel)
